@@ -21,3 +21,29 @@ grid on
 xlabel('x') 
 ylabel('y') 
 % legend('Euler','Exact')
+
+
+''''''''''''''''''''''''
+f=@(x,y) x*sqrt(x+y.^2)+3*y; 
+x1=0;xn=1; y1=0.3; 
+h=0.125; 
+x=x1:h:xn; 
+n=length(x); 
+y = zeros(size(x));
+y(1)=y1; 
+for i=1:n-1 
+  y(i+1)=y(i)+h*f(x(i),y(i)); 
+end 
+fprintf('Euler Method Solution\n') 
+ fprintf('       x             y\n') 
+for i=1:n 
+  fprintf('  %8.2f       %8.6f\n', x(i),y(i)) 
+end 
+%  yExa=3*exp(x)-2*x-x.^2-2; 
+figure 
+ plot(x,y,':r') 
+%  plot(x,y,':r', x, yExa,'b') 
+grid on 
+xlabel('x') 
+ylabel('y') 
+% legend('Euler','Exact')
